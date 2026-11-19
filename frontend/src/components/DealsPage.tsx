@@ -223,10 +223,6 @@ export function DealsPage({ demoMode }: { demoMode: boolean }) {
                   </p>
                 </li>
               </ol>
-              <p className="note">
-                Sample deals are fictional. New uploads are stored but not read by an AI agent, so their fields start
-                empty. The downstream system is a stand-in service.
-              </p>
               <div className="dialog-actions">
                 <button className="btn btn-primary" onClick={() => setDialog(null)}>
                   Got it
