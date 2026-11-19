@@ -93,7 +93,8 @@ export function DealsPage({ demoMode }: { demoMode: boolean }) {
             </button>
           ))}
         </div>
-        <span className="page-total muted small" aria-live="polite">
+        {/* Not shown. A screen reader still reads it out when a search or filter changes the list. */}
+        <span className="visually-hidden" aria-live="polite">
           {shown.length === rows.length ? `${rows.length} deals` : `${shown.length} of ${rows.length} deals`}
         </span>
       </div>
