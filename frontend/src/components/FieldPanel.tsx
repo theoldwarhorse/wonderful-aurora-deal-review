@@ -5,12 +5,10 @@ import { formatDate, formatDateTime } from '../format';
 import { blockNavigation } from '../navigation';
 import { FieldRow, type FieldActions } from './FieldRow';
 
-type Filter = 'all' | 'points' | 'missing' | 'check' | 'changed';
+type Filter = 'all' | 'missing' | 'check' | 'changed';
 
-// `flagged` holds the ids of fields with a point from a final check still to be looked at.
-const FILTERS: Record<Filter, { label: string; test: (f: Field, flagged: Set<string>) => boolean }> = {
-  all: { label: 'All fields', test: () => true },
-  points: { label: 'Check again', test: (f, flagged) => flagged.has(f.id) },
+const FILTERS: Record<Filter, { label: string; test: (f: Field) => boolean }> = {
+  all: { label: 'All', test: () => true },
   missing: { label: 'Needs a value', test: (f) => f.state === 'missing' },
   check: { label: 'Lower confidence', test: (f) => f.confidence === 'low' || f.confidence === 'medium' },
   changed: { label: 'Changed', test: (f) => f.state === 'edited' || f.state === 'not-in-documents' },
@@ -45,11 +43,7 @@ export function FieldPanel({
   const readOnly = deal.status === 'approved';
   const missing = deal.summary.missing;
   const flagged = new Set(deal.points.filter((point) => !point.checkedAt).map((point) => point.fieldId));
-  const matches = (f: Field) => FILTERS[filter].test(f, flagged);
-  // The final-check pill appears only on a deal where a check has raised something.
-  const pills = (['points', 'missing', 'check', 'changed'] as const).filter(
-    (id) => id !== 'points' || deal.points.length > 0,
-  );
+  const matches = FILTERS[filter].test;
   const groups = [...new Set(deal.fields.map((f) => f.group))];
   const shown = (group: string) => deal.fields.filter((f) => f.group === group && matches(f));
 
@@ -78,17 +72,15 @@ export function FieldPanel({
       <div className="panel-head">
         <h2>Extracted details</h2>
         <p className="panel-intro muted small">Select a field to check its source or change its value.</p>
-        {/* Press a pill to show only those fields; press it again to show them all. */}
-        <div className="status-pills field-filter" role="group" aria-label="Show only">
-          {pills.map((id) => (
+        <div className="status-pills field-filter" role="group" aria-label="Show">
+          {(Object.keys(FILTERS) as Filter[]).map((id) => (
             <button
               key={id}
               className="status-pill"
               aria-pressed={filter === id}
-              onClick={() => leaveEdit(() => setFilter(filter === id ? 'all' : id))}
+              onClick={() => leaveEdit(() => setFilter(id))}
             >
-              {FILTERS[id].label}{' '}
-              <span className="count">{deal.fields.filter((f) => FILTERS[id].test(f, flagged)).length}</span>
+              {FILTERS[id].label} <span className="count">{deal.fields.filter(FILTERS[id].test).length}</span>
             </button>
           ))}
         </div>

@@ -62,7 +62,7 @@ The MCP tools cannot edit values, resolve points, or approve a deal. These are w
 |---|---|---|
 | 1 | Agent | Reads the deal with `get_deal` and its documents from the `file` address of each |
 | 2 | Agent | Calls `raise_point` for a field, with a reason and, if it can, a source |
-| 3 | Deal manager | Sees "Check again" on the field, the reason, and a link to the page. A filter shows only those fields |
+| 3 | Deal manager | Sees "Check again" on the field, the reason, and a link to the page |
 | 4 | Deal manager | Corrects the value or leaves it, and marks the point as checked |
 | 5 | Deal manager | Approves. Any point still open is listed in the approval summary |
 
