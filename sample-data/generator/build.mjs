@@ -178,11 +178,11 @@ for (const deal of deals) {
   const startsAs = seedReview?.approved ? 'Approved' : seedReview ? 'In review' : 'To review';
   writeFileSync(join(dealsDir, deal.id, 'README.md'), `# ${name}
 
-${deal.values.borrower.replace(/\.$/, '')}. ${facility}, ${deal.values.governing_law}. Invented, for demonstration only.
+${deal.values.borrower.replace(/\.$/, '')}. ${facility}, ${deal.values.governing_law}. All names and documents are fictional.
 
 ${deal.shows}
 
-Starts as: **${startsAs}**.
+Initial review status: **${startsAs}**.
 
 ## Documents
 
@@ -190,23 +190,23 @@ Starts as: **${startsAs}**.
 |---|---|---|---|---|---|
 ${deal.docs.map((d) => `| ${d.title} | ${TYPE[d.type]} | ${d.dated} | ${d.pages.length} | [${d.id}.pdf](documents/${d.id}.pdf) | [${d.id}.tex](latex/${d.id}.tex) |`).join('\n')}
 
-## What the mock agent got wrong
+## Deliberate extraction errors
 
-The answer key for this deal. Every other field was extracted correctly.
+Use this answer key to check corrections during the demo. All other fields match the generated documents.
 
 | Field | Documents say | Agent extracted | Note |
 |---|---|---|---|
 ${mistakes.join('\n')}
 ${points.length ? `
-## What the sample final check points out
+## Sample checking-agent point
 
-Raised as a checking agent would raise them, so the feature can be seen without an agent connected.
+These points are preloaded sample data. They demonstrate the review workflow without a connected checking agent.
 
 | Field | Point | Where to look |
 |---|---|---|
 ${points.map((p) => `| ${fields.find((f) => f.id === p.fieldId).label} | ${p.reason} | ${deal.docs.find((d) => d.id === p.source.documentId).title}, page ${p.source.page}, ${p.source.clause} |`).join('\n')}
 ` : ''}
-Generated from [definition.mjs](definition.mjs). Edit that file and run the generator, not this one.
+To change this deal, edit [definition.mjs](definition.mjs) and run the generator. This README is generated and will be overwritten.
 `);
   console.log(`${name}: ${documents.length} PDFs, ${extractedFields.length} fields, ${mistakes.length} planted ${mistakes.length === 1 ? 'mistake' : 'mistakes'}`);
 }

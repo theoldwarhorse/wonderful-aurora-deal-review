@@ -1,58 +1,55 @@
 # Sample data
 
-Invented loan deals for demonstrating the app.
+Three fictional loan deals provide eleven PDFs, mock extractions, and answer keys for the review workflow. They cover a deal awaiting review, one in progress, and one already approved.
 
-## Layout
+## The deals
 
-| Path | Holds |
-|---|---|
-| `deals/` | The three deals, one folder each: `halyard/`, `marlow/`, `tern/` |
-| `fields.json` | The 42 fields an agent is asked to extract |
-| `generator/` | The script that builds each deal folder, and the three LaTeX house styles |
-
-Inside each deal folder:
-
-| File | Holds |
-|---|---|
-| `definition.mjs` | The deal, written by hand: its true values, which clause sits on which page, the agent's mistakes, and any point a final check would raise |
-| `README.md` | What the deal shows, its documents, and the answer key |
-| `deal.json` | The mock extraction, and any sample points, as the app loads them |
-| `documents/` | The PDFs |
-| `latex/` | The LaTeX source of each PDF |
-
-Only `definition.mjs` is edited by hand. The generator writes the rest.
-
-## The three deals
-
-| Deal | Facility | PDFs | House style | Shows |
+| Deal | Facility | PDFs | Document style | Demonstrates |
 |---|---|---|---|---|
-| [Project Halyard](deals/halyard/README.md) | USD 250m term loan, English law | 5 | Classic: serif, clauses 1, 2, 3 | Missed fields, and an amendment the agent did not apply, which a sample final check points out |
-| [Project Marlow](deals/marlow/README.md) | GBP 85m term loan, English law | 4 | Modern: sans-serif, clauses 3.1, 3.2 | Every field found, two wrong. Starts in review |
-| [Project Tern](deals/tern/README.md) | USD 120m term loan, New York law | 2 | US: letter paper, Section 3.01 | Every field found, one wrong. Starts approved |
+| [Project Halyard](deals/halyard/README.md) | USD 250m term loan, English law | 5 | Classic: serif text, clauses 1, 2, 3 | Missing values, an overlooked amendment, and a sample checking-agent point |
+| [Project Marlow](deals/marlow/README.md) | GBP 85m term loan, English law | 4 | Modern: sans-serif text, clauses 3.1, 3.2 | Two incorrect values, with one correction already saved |
+| [Project Tern](deals/tern/README.md) | USD 120m term loan, New York law | 2 | US: letter paper, Section 3.01 | A completed review with one corrected value |
 
-Each deal's README lists every mistake planted in its extraction. The house styles differ on purpose, so the packs do not look like one template.
+Each deal's README lists its documents and planted extraction issues. Different document styles make the packs more representative of material from different sources.
 
-## How a deal is generated
+## Files and folders
 
-1. **Define it** in `definition.mjs`.
-2. **Write the LaTeX.** Each document becomes a title and a list of clauses, in the deal's house style.
-3. **Typeset the PDFs** with [tectonic](https://tectonic-typesetting.github.io/). The generator stops if a document's page count differs from its definition.
-4. **Write the extraction and the answer key.** The generator placed every clause, so it knows the page and clause of every field.
+| Path | Contents |
+|---|---|
+| `deals/` | One folder per deal: `halyard/`, `marlow/`, and `tern/` |
+| `fields.json` | The initial 42 fields requested from the extraction service |
+| `generator/` | The generator and shared LaTeX styles |
 
-Because the documents and the extraction come from one definition, a source reference can never point at the wrong page.
+Each deal folder contains:
 
-To regenerate after editing a definition:
+| Path | Contents |
+|---|---|
+| `definition.mjs` | Handwritten values, document layout, extraction mistakes, and optional checking points |
+| `README.md` | Generated overview, document links, and answer key |
+| `deal.json` | Generated mock extraction and sample review data loaded by the app |
+| `documents/` | Generated PDFs |
+| `latex/` | Generated LaTeX source for each PDF |
 
-```
+Edit a deal's `definition.mjs` to change its content. The generator writes the other files; shared styles and README wording are maintained in `generator/`.
+
+## Generation
+
+The generator reads each definition, writes its clauses in the chosen LaTeX style, and typesets the PDFs with [Tectonic](https://tectonic-typesetting.github.io/). It then writes the mock extraction and answer key using the same clause locations.
+
+Page breaks are explicit. Generation stops if a PDF's page count differs from its definition, helping keep source references aligned with the documents.
+
+To regenerate from the repository root:
+
+```sh
 node sample-data/generator/build.mjs
 ```
 
-It needs `tectonic` and `pdfinfo` (from poppler). Everything it writes is committed.
+This requires `tectonic` and `pdfinfo` from Poppler. The generated files are committed, so these tools are not needed to run the app.
 
-## Limits
+## Limitations
 
-- The documents are short, one to seven pages, with one field per clause. A real facility agreement runs to hundreds of pages and buries several terms in one clause.
-- All three are term loans, so one field list fits them all.
-- The mistakes are planted by hand. They are plausible, not the output of a real model.
-- Marlow and Tern start with sample history, so every status is on show. Tern is marked as delivered, but nothing was sent for it.
-- Halyard starts with one sample point from a final check. It was written by hand, not raised by an agent.
+- Documents are one to seven pages long, usually with one field per clause. Real agreements can span hundreds of pages and combine several terms in one clause.
+- All three deals are term loans and use the same field list.
+- Extraction mistakes are deliberately planted, not produced by a model.
+- Marlow and Tern include sample review history. Tern is marked as delivered, but no message was actually sent for it.
+- Halyard's checking-agent point is handwritten sample data. No checking agent runs as part of the demo.

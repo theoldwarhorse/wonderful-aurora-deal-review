@@ -1,61 +1,62 @@
 # Aurora Bank: Deal Review
 
-A workspace where a deal manager checks the loan details an AI agent extracted from a deal's PDFs, corrects them, and approves the deal.
+A prototype for reviewing AI-extracted loan details against their source PDFs. Deal managers can check the evidence, correct values, and approve a deal before its details are sent downstream.
 
-The brief puts a person between an AI agent and the downstream system, and this is that person's screen. Every value shows where it came from, the deal manager corrects what is wrong, and only they can approve. An AI agent can also run a final check and point at fields worth a second look, but it cannot change or approve anything.
+Built by Brian de Klerk for the Wonderful take-home exercise. All sample deals and documents are fictional.
 
-Author: Brian de Klerk. Take-home exercise for Wonderful. The task is in [docs/brief.md](docs/brief.md).
+## Run the app
 
-## Run it
+Start Docker, then run this command from the repository root:
 
-Needs Docker, running. Nothing else.
-
-```
-docker compose up -d --wait && open http://localhost:8080
+```sh
+docker compose up -d --wait
 ```
 
-That builds everything, starts it, and opens the app. The first run takes a minute or two. On Linux or Windows, leave off the `open` part and visit the address yourself.
+Open [localhost:8080](http://localhost:8080). The first run builds the application and loads three sample deals. The demo uses ports **8080** and **8081**.
 
-It uses ports 8080 and 8081. `docker compose down -v` stops it and deletes its data.
+To stop the app and keep your data, run `docker compose down`. To stop it and delete its stored data, run `docker compose down -v`.
 
-## A five-minute tour
+## Try the review workflow
 
-1. **Open Project Halyard.** Its five documents are listed above the page; the 42 extracted fields are on the right.
-2. **Select "Final maturity date".** The Facility Agreement opens at the clause it was read from: 14 March 2029. The field is marked **Check again**: a sample final check by an AI agent says an amendment changed the date.
-3. **Follow the point's link to the First Amendment Agreement.** The date was extended to 14 March 2030. Type the new date into the field, press Enter, and choose **Mark as checked**.
-4. **Press "Needs a value".** Three fields the agent missed. Find each in the documents and add it, or mark it **Not in the documents**.
-5. **Approve deal.** A summary lists every change before you confirm. The deal becomes read-only and is sent to a stand-in downstream system.
+1. **Open Project Halyard.** Its five PDFs appear on the left and 42 extracted fields on the right.
+2. **Select Final maturity date.** The original agreement says **14 March 2029**. A sample checking-agent point marks the field **Check again** because an amendment changed it.
+3. **Open the amendment from the point's source link.** It changes the date to **14 March 2030**. Enter that date, press Enter to save, then select **Mark as checked**.
+4. **Select Needs a value.** Check the documents for the three missing values. Enter each value, or select **Not in the documents** if it is genuinely absent.
+5. **Review the remaining fields, then select Approve deal.** Check the summary before confirming. The deal becomes read-only and its values are sent to the mock downstream service.
 
-Every mistake planted in this deal is listed in [sample-data/deals/halyard/README.md](sample-data/deals/halyard/README.md). **Reset demo** on the Deals page restores the starting state.
+The [Halyard answer key](sample-data/deals/halyard/README.md) lists every planted extraction issue. **Reset demo** restores the sample deals and removes uploaded deals and saved changes.
 
-## Also in the app
+## Other features
 
-- **Admin**, in the header. Change the list of fields the agent is asked to extract, see how the tool is being used and how long reviews take, and connect an AI agent, over MCP, to run a final check on a deal.
-- **New deal**, on the Deals page. Name a deal and upload its PDFs.
-- **How to use**, at the foot of the Deals page. A four-step guide for a deal manager.
+- **New deal:** upload a document pack. No extraction agent is included, so its fields start empty.
+- **How to use:** a short guide for deal managers, available from the Deals page.
+- **Admin:** manage field definitions, view activity, and connect an external AI agent for an advisory final check. The agent can raise points for review; its MCP tools cannot edit values or approve deals.
 
-## Tests
+## Run the tests
 
+Backend tests, from the repository root:
+
+```sh
+docker compose run --rm --build tests
 ```
-docker compose run --rm --build tests    # backend
-cd frontend && npm install && npm test   # frontend
+
+Frontend tests:
+
+```sh
+cd frontend
+npm install
+npm test
 ```
 
-GitHub runs both on every push, along with the linters, a type check, and a build. The steps are in `.github/workflows/ci.yml`.
+[CI](.github/workflows/ci.yml) also runs linting, formatting checks, type checks, and the frontend build.
 
-## Where things are
+## Find your way around
 
-Each folder has its own README.
-
-| Folder | Holds |
+| Location | Contents |
 |---|---|
-| [frontend/](frontend/README.md) | The review screen (React, TypeScript) |
-| [backend/](backend/README.md) | The review service: the rules, the data, and the API (Python, Postgres) |
-| [sample-data/](sample-data/README.md) | Three invented deals, and how their documents were generated |
-| `docs/` | The three documents below |
-
-## Read next
-
-- [docs/brief.md](docs/brief.md): the task as it was set.
-- [docs/assumptions-and-decisions.md](docs/assumptions-and-decisions.md): the short note the brief asks for. Assumptions, key decisions, and what I would improve.
-- [docs/architecture.md](docs/architecture.md): how the parts fit together, how other systems connect, and known gaps.
+| [frontend/](frontend/README.md) | React screens, components, and frontend tests |
+| [backend/](backend/README.md) | Python API, review rules, database, and backend tests |
+| [sample-data/](sample-data/README.md) | Fictional deals, PDFs, answer keys, and generation scripts |
+| [The brief](docs/brief.md) | Wonderful's original task |
+| [Submission note](docs/assumptions-and-decisions.md) | Assumptions, key decisions, and improvements with more time |
+| [Architecture](docs/architecture.md) | Integrations, system behaviour, and known limitations |

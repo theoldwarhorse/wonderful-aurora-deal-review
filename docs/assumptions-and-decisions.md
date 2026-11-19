@@ -1,76 +1,45 @@
-# Assumptions, decisions, and next steps
+# Assumptions, key decisions, and next steps
 
-[The brief](brief.md) asks for a short note on assumptions, key decisions, and what I would improve with more time. This is that note.
+This is the short submission note requested in [the brief](brief.md). The deliverable is a runnable prototype for gathering feedback from deal managers on the review experience.
 
-## What this is
+## Scope
 
-A prototype of the screen a deal manager uses to review extracted loan details against the source PDFs. That screen is the submission. Behind it is a small working service (a Python API, a database, delivery to a downstream system, an admin page, and a door through which an AI agent can run a final check). It goes beyond the brief on purpose, to show how the screen would sit in a real system, and it is secondary. It was built with agentic coding tools, as the brief invites: Claude Code, Codex, and ChatGPT for review.
+The main workflow is to compare extracted loan details with several source PDFs, correct mistakes, and approve the deal before downstream capture. The interface keeps the reviewer responsible for interpreting the evidence and making the decision.
 
-## How I read the brief
-
-The brief describes a human in the loop. An AI agent extracts, and a deal manager must review and approve before anything reaches the downstream system. The deal manager is there because the agent can be wrong. So the screen has two jobs: make their check quick, and keep the decision theirs.
-
-Everything here follows from that.
-
-- **The deal manager makes every decision.** Only they can change a value, and only they can approve.
-- **The agent's work is never taken on trust.** Each value shows the document, page, and clause it came from, and a correction is kept beside the original.
-- **Where AI appears a second time, it advises.** An agent can run a final check on a deal and point at fields worth a second look. It cannot change a value, settle its own point, hold up an approval, or approve.
+A working API, database, mock downstream service, administration screens, and an optional agent-checking interface support the demonstration. These go beyond the brief and are secondary to the review UI. The prototype was built with Claude Code and Codex, with ChatGPT used for review.
 
 ## Assumptions
 
-Each would be checked with deal managers first.
+These choices would be validated with deal managers:
 
-1. A deal arrives with its PDFs uploaded and extraction finished.
-2. The agent returns an agreed list of fields. The 42 here are a plausible set for a term loan, not a bank's schema.
-3. For each field the agent can say where it found the value (document, page, clause) and how confident it is. The screen is better with both and works without either.
-4. The agent may find nothing for a field.
-5. One deal manager reviews a deal. There is no sign-in, so nobody is named: actions are recorded under the job title.
-6. Approval is for the whole deal, not field by field.
-7. The deal manager corrects what is wrong or missing directly. Nothing goes back to another team.
-8. Every field needs a value, or an explicit "Not in the documents", before approval.
-9. The deal manager decides which document prevails. The app does not assume the latest amendment wins.
-10. Deal managers work on a wide desktop screen.
-11. Approval releases the values to one downstream system.
-12. An approved deal is final and is not reopened.
+- **Intake:** deals normally arrive with their PDFs uploaded and extraction complete. The prototype also supports uploads, but does not run extraction itself.
+- **Extracted data:** the agent returns an agreed field list, with optional confidence and document, page, and clause references. Missing values and missing source references are supported. The initial 42 fields are an illustrative term-loan schema.
+- **Review:** one deal manager works on a wide desktop screen and corrects incorrect or missing values directly. The prototype does not route issues to another team.
+- **Completion:** every field must have a value or an explicit **Not in the documents** decision. Approval applies to the whole deal, without requiring a sign-off on every field.
+- **Conflicting evidence:** the reviewer decides which document governs a value. The app does not assume that the latest amendment overrides every earlier term.
+- **Identity:** there is no sign-in. Human actions are recorded under the title **Deal manager**, rather than attributed to an individual.
+- **After approval:** values are sent to one downstream system. The approved deal is final and cannot be reopened in this prototype.
 
 ## Key decisions
 
-**The review screen**
+**Keep comparison easy.** Documents and fields sit side by side. Selecting a field opens its source page when available, and the document pack remains visible so amendments are easy to find. Field rows stay quiet until selected, when their source, confidence, and controls appear.
 
-- **Documents and fields side by side.** Selecting a field opens its source page, so checking a value is one click and a glance.
-- **The whole document pack stays visible.** Finding the amendment is the point of the exercise, so documents are never hidden behind a scroll.
-- **Quiet by default.** A field shows its label and value. Source, confidence, and actions appear only on the selected field.
-- **Correcting is typing.** The selected field's value is an edit box. Type and press Enter; there is no separate edit mode.
-- **The extraction is never overwritten.** A correction is stored beside the original, so both are always shown.
-- **Unsaved work is never dropped silently.** While a changed value is unsaved, every way of moving on is refused with the same message.
+**Make corrections straightforward.** The selected value is editable in place; Enter saves it. Original extraction values are preserved alongside corrections, and navigation guards protect unsaved changes.
 
-**Behind the screen**
+**Keep approval consistent.** The server owns the review rules. Extraction replacement is blocked once review starts. Approval saves a snapshot of the fields and an outbound message in one transaction; delivery can fail and be retried without losing the approval.
 
-- **The rules live in one place, on the server**, so the screen, the API, and agents cannot disagree.
-- **An approved deal is a snapshot.** What the reviewer approved, what the app shows afterwards, and what was sent downstream are the same record.
-- **The extraction is locked once review starts**, so a reviewer's work cannot be replaced underneath them.
-- **Approval and hand-off are one transaction.** Delivery is a separate step that can fail and be retried.
-- **Everything changed or opened is recorded.** The record shows what was opened, not that it was read.
+**Record actions without overstating them.** Changes and opened items are recorded separately. Opening a field is evidence of an interaction, not proof that its source was read or understood.
 
-**The final check**
-
-The service has one door for AI agents, an MCP server, and it exists for one task. Before a deal is approved, an agent can read it against its documents and raise points: "check this field again, here is why, here is the page". On Project Halyard a sample point tells the deal manager that an amendment changed the maturity date.
-
-- **A second reader, not a second decider.** Raising a point is the only thing an agent can do through that door. It cannot put a value in, change one, or approve.
-- **Advice sits beside the values, never in them.** A point is not part of what is approved and is not sent downstream.
-- **A point cannot hold up a deal, and an agent cannot clear one.** Open points are listed in the approval summary and the deal manager decides. There is no way for an agent to say a deal is fine, so silence is never read as assurance.
-- **Only the deal manager settles a point.** Raising it and marking it checked are both in the audit trail.
-- **The extraction does not come through this door.** The upstream extraction service has its own endpoint, so an agent connected for the check has no way to supply values.
+**Keep an optional AI check advisory.** An external agent can use MCP to read a deal and raise points for a second look. It cannot supply values, edit them, resolve its own points, or approve through those tools. Points sit beside the reviewed data and are excluded from the downstream message. Unresolved points appear in the approval summary but do not block the reviewer. No checking agent is included; Halyard has one preloaded example. An absence of points is not presented as a successful check.
 
 ## With more time
 
-1. **Watch deal managers use it.** Whether they work field by field or document by document would shape the layout more than anything else.
-2. **Amendment awareness.** Show the original clause and the amending clause together. Today a final check can point at the amendment, but the screen does not show the two clauses side by side.
-3. **A real checking agent.** The door, the rules, and the screen for the final check are built, and one sample point is preloaded. No agent ships with this. It should not be the extraction agent asked the same question again, because that agent tends to agree with itself.
-4. **Sign-in, roles, and a second approver**, through the bank's own identity system.
-5. **Validation.** Typed dates, amounts, and percentages, with checks across fields.
-6. **Highlight the source text** on the page, using positions from the agent.
-7. **Retry failed deliveries automatically**, with an alert.
-8. **Feed corrections back** to improve the extraction agent.
+1. **Observe deal managers using the prototype.** Test whether they prefer to work field by field or document by document, and refine the layout around that behaviour.
+2. **Improve evidence comparison.** Show an original clause beside its amendment and highlight source text when extraction provides page coordinates.
+3. **Evaluate a real checking agent.** Measure whether it catches errors and provides useful evidence, including errors shared with the extraction agent.
+4. **Add sign-in, roles, and a second approver** through the bank's identity provider.
+5. **Validate dates, amounts, and percentages**, including relationships between fields.
+6. **Retry failed deliveries automatically** and alert someone when intervention is needed.
+7. **Use reviewer corrections to improve extraction.**
 
-[architecture.md](architecture.md) has the detail, including a table of known gaps.
+The prototype uses synthetic data and is not ready for real loan documents. See [Architecture](architecture.md) for integration details and known limitations.

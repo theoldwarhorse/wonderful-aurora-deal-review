@@ -1,10 +1,10 @@
 # Project Halyard
 
-Kestrel Renewables Holdings Ltd. USD 250,000,000 term loan, English law. Invented, for demonstration only.
+Kestrel Renewables Holdings Ltd. USD 250,000,000 term loan, English law. All names and documents are fictional.
 
 Not everything was found. Three fields the agent missed, a maturity date changed by an amendment the agent did not apply, swapped digits in a fee, and a source with no page.
 
-Starts as: **To review**.
+Initial review status: **To review**.
 
 ## Documents
 
@@ -16,9 +16,9 @@ Starts as: **To review**.
 | First Amendment Agreement | Amendment | 2 June 2025 | 2 | [amendment-1.pdf](documents/amendment-1.pdf) | [amendment-1.tex](latex/amendment-1.tex) |
 | Certificate of Incorporation | Supporting document | 8 January 2019 | 1 | [certificate-of-incorporation.pdf](documents/certificate-of-incorporation.pdf) | [certificate-of-incorporation.tex](latex/certificate-of-incorporation.tex) |
 
-## What the mock agent got wrong
+## Deliberate extraction errors
 
-The answer key for this deal. Every other field was extracted correctly.
+Use this answer key to check corrections during the demo. All other fields match the generated documents.
 
 | Field | Documents say | Agent extracted | Note |
 |---|---|---|---|
@@ -29,12 +29,12 @@ The answer key for this deal. Every other field was extracted correctly.
 | Commitment fee | 0.35% per annum | 0.53% per annum | Wrong value |
 | Minimum voluntary prepayment | USD 5,000,000 | (empty) | Not extracted |
 
-## What the sample final check points out
+## Sample checking-agent point
 
-Raised as a checking agent would raise them, so the feature can be seen without an agent connected.
+These points are preloaded sample data. They demonstrate the review workflow without a connected checking agent.
 
 | Field | Point | Where to look |
 |---|---|---|
 | Final maturity date | The First Amendment Agreement replaces "14 March 2029" with "14 March 2030". The extracted date is the one from the original agreement. | First Amendment Agreement, page 1, cl. 2 |
 
-Generated from [definition.mjs](definition.mjs). Edit that file and run the generator, not this one.
+To change this deal, edit [definition.mjs](definition.mjs) and run the generator. This README is generated and will be overwritten.

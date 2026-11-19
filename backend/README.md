@@ -1,24 +1,24 @@
 # Backend
 
-The review service. It holds the deals, applies the review rules, records every change, and sends approved deals downstream. The frontend holds no rules and no data: everything it shows comes from here.
+The backend stores deals, enforces review and approval rules, records changes, and sends approved values to the downstream system. The frontend uses its responses to display review status and available actions.
 
 Python 3.12, FastAPI, and Postgres, with plain SQL and no ORM.
 
-## Running it
+## Run the service
 
 The service runs as part of the whole app, from the repository root:
 
-```
+```sh
 docker compose up -d --wait
 ```
 
-Every call is listed, and can be tried, at http://localhost:8080/docs.
+Explore and try the HTTP endpoints in the [API documentation](http://localhost:8080/docs).
 
-## What is in `app/`
+## Code map
 
-Start with `review.py` and `schema.sql`. They are short, and everything else builds on them.
+Start with `review.py` for the review rules and `schema.sql` for the data model. The remaining modules handle storage, integrations, and HTTP requests.
 
-| File | Holds |
+| File | Responsibility |
 |---|---|
 | `review.py` | The review rules, as plain functions with no database: what counts as missing, edited, or approvable |
 | `schema.sql` | The nine database tables, each with a comment |
@@ -41,7 +41,7 @@ Start with `review.py` and `schema.sql`. They are short, and everything else bui
 
 ## The data
 
-| Table | Holds |
+| Table | Contents |
 |---|---|
 | `deals` | Each deal, when its review started, and its approval. An approved deal also stores its fields exactly as approved |
 | `documents` | The PDFs of each deal |
@@ -53,13 +53,13 @@ Start with `review.py` and `schema.sql`. They are short, and everything else bui
 | `usage_events` | What reviewers opened: deals, documents, and fields |
 | `outbox` | Messages for the downstream system, and whether each was delivered |
 
-The PDFs themselves are files on disk, under the folder named by `DATA_DIR`.
+PDF files are stored on disk under `DATA_DIR`; the database stores their metadata.
 
 ## Settings
 
-All from environment variables. The values used by the demo are in `docker-compose.yml`.
+Configure the service through environment variables. The demo values are in `docker-compose.yml`.
 
-| Variable | Sets | If left out |
+| Variable | Purpose | Default behaviour |
 |---|---|---|
 | `DATABASE_URL` | The Postgres database | A local database named `aurora` |
 | `DATA_DIR` | Where the PDFs are kept | `/data` |
@@ -75,18 +75,19 @@ All from environment variables. The values used by the demo are in `docker-compo
 
 From the repository root:
 
-```
+```sh
 docker compose run --rm --build tests
 ```
 
-That runs 40 tests: 7 on the review rules alone, and 33 through the API against a real Postgres. Each test name says what it proves.
+The suite tests the review rules and exercises the API against a real Postgres database.
 
-The code is linted and formatted with ruff, and type-checked with mypy. Both run on every push. To run them yourself, from `backend/`:
+The code is linted and formatted with ruff, and type-checked with mypy. These checks run in CI. To run the lint and format checks locally, from `backend/`:
 
+```sh
+uvx ruff@0.17.5 check .
+uvx ruff@0.17.5 format --check .
 ```
-uvx ruff@0.17.5 check . && uvx ruff@0.17.5 format --check .
-```
 
-## More
+## Further reading
 
 [docs/architecture.md](../docs/architecture.md) covers how other systems connect to this service, the admin functions, sign-in, and known gaps.
