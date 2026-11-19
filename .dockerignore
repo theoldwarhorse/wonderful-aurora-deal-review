@@ -1,0 +1,25 @@
+# Keeps the Docker build small, and keeps local files out of the image.
+# The Dockerfile copies frontend/, backend/ and sample-data/. Nothing else is needed.
+
+# Installed and built on the machine, not in the image
+**/node_modules
+**/dist
+**/.venv
+
+# Caches
+**/__pycache__
+**/.pytest_cache
+**/.ruff_cache
+
+# Never send local secrets to a build
+.env
+
+# Not used by the build
+.git
+.github
+docs
+sample-data/generator
+sample-data/deals/*/latex
+sample-data/deals/*/definition.mjs
+**/*.md
+**/.DS_Store

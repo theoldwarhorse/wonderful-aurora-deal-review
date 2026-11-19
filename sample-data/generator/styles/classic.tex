@@ -1,0 +1,20 @@
+% House style "classic": an English-law agreement as a City firm might set it.
+% Serif type on A4, clauses numbered 1, 2, 3 with capitalised headings.
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=30mm]{geometry}
+\usepackage{newtxtext}
+\linespread{1.15}
+
+% \doctitle{title}{deal}{borrower}{date}
+\newcommand{\doctitle}[4]{%
+  \begin{center}
+    {\Large\bfseries\MakeUppercase{#1}}\\[4mm]
+    #2 \enspace|\enspace #3 \enspace|\enspace Dated #4\\[2mm]
+    \rule{40mm}{0.4pt}
+  \end{center}
+  \vspace{6mm}}
+
+% \clause{number}{heading}{text}
+\newcommand{\clause}[3]{%
+  \noindent\textbf{#1\quad\MakeUppercase{#2}}\par\smallskip
+  \noindent\hangindent=9mm\hangafter=0 #3\par\bigskip}

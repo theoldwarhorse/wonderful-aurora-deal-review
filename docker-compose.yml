@@ -1,0 +1,70 @@
+# Start everything with:  docker compose up
+# Then open http://localhost:8080
+#
+# The secrets below are demo defaults. Set the variables in your shell or a .env
+# file to override them without editing this file.
+
+services:
+  app:
+    build:
+      context: .
+      target: runtime
+    ports:
+      - "8080:8000"
+    environment:
+      DATABASE_URL: postgresql://aurora:${POSTGRES_PASSWORD:-aurora}@db:5432/aurora
+      DOWNSTREAM_URL: ${DOWNSTREAM_URL:-http://downstream:8000/deals}
+      EXTRACTION_TOKEN: ${EXTRACTION_TOKEN:-demo-extraction-token}
+      MCP_TOKEN: ${MCP_TOKEN:-demo-mcp-token}
+      DEMO_MODE: "1"
+      PUBLIC_URL: http://localhost:8080
+    volumes:
+      - documents:/data
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: aurora
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-aurora}
+      POSTGRES_DB: aurora
+    volumes:
+      - database:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aurora -d aurora"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  # A stand-in for the system that receives approved deals. Not part of the product.
+  # See what it received at http://localhost:8081/received
+  downstream:
+    build:
+      context: .
+      target: runtime
+    command: ["uvicorn", "mock_downstream:app", "--host", "0.0.0.0", "--port", "8000"]
+    ports:
+      - "8081:8000"
+
+  # Not started by `docker compose up`. Run with:  docker compose run --rm tests
+  tests:
+    profiles: ["test"]
+    build:
+      context: .
+      target: test
+    environment:
+      DATABASE_URL: postgresql://aurora:${POSTGRES_PASSWORD:-aurora}@db:5432/aurora
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  database:
+  documents:

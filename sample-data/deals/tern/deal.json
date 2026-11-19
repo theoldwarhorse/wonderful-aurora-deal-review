@@ -1,0 +1,457 @@
+{
+  "id": "tern",
+  "name": "Project Tern",
+  "receivedAt": "2026-11-12T12:00:00Z",
+  "borrower": "Ashby Water Utilities, Inc.",
+  "facility": "USD 120,000,000 term loan",
+  "documents": [
+    {
+      "id": "credit-agreement",
+      "short": "CA",
+      "title": "Credit Agreement",
+      "type": "agreement",
+      "dated": "22 September 2025",
+      "file": "credit-agreement.pdf"
+    },
+    {
+      "id": "secretarys-certificate",
+      "short": "SC",
+      "title": "Secretary's Certificate",
+      "type": "supporting",
+      "dated": "22 September 2025",
+      "file": "secretarys-certificate.pdf"
+    }
+  ],
+  "fields": [
+    {
+      "id": "borrower",
+      "value": "Ashby Water Utilities, Inc.",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 1,
+        "clause": "s. 1.02"
+      }
+    },
+    {
+      "id": "borrower_reg_no",
+      "value": "5521908",
+      "confidence": "high",
+      "source": {
+        "documentId": "secretarys-certificate",
+        "page": 1,
+        "clause": "s. 1.03"
+      }
+    },
+    {
+      "id": "borrower_jurisdiction",
+      "value": "Delaware",
+      "confidence": "high",
+      "source": {
+        "documentId": "secretarys-certificate",
+        "page": 1,
+        "clause": "s. 1.02"
+      }
+    },
+    {
+      "id": "guarantor",
+      "value": "Ashby Infrastructure Holdings, LLC",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 1,
+        "clause": "s. 1.03"
+      }
+    },
+    {
+      "id": "arranger",
+      "value": "Aurora Bank plc, New York Branch",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 1,
+        "clause": "s. 1.04"
+      }
+    },
+    {
+      "id": "original_lender",
+      "value": "Aurora Bank plc, New York Branch",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 1,
+        "clause": "s. 1.05"
+      }
+    },
+    {
+      "id": "facility_agent",
+      "value": "Aurora Bank plc, New York Branch",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 1,
+        "clause": "s. 1.06"
+      }
+    },
+    {
+      "id": "security_agent",
+      "value": "Hollis Trust Company, N.A.",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 1,
+        "clause": "s. 1.07"
+      }
+    },
+    {
+      "id": "facility_type",
+      "value": "Term loan",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 2,
+        "clause": "s. 2.02"
+      }
+    },
+    {
+      "id": "facility_amount",
+      "value": "USD 120,000,000",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 2,
+        "clause": "s. 2.03"
+      }
+    },
+    {
+      "id": "currency",
+      "value": "USD",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 2,
+        "clause": "s. 2.04"
+      }
+    },
+    {
+      "id": "purpose",
+      "value": "Refinancing existing indebtedness and funding capital expenditure on water treatment facilities",
+      "confidence": "medium",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 2,
+        "clause": "s. 2.05"
+      }
+    },
+    {
+      "id": "ranking",
+      "value": "Senior secured",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 2,
+        "clause": "s. 2.06"
+      }
+    },
+    {
+      "id": "agreement_date",
+      "value": "22 September 2025",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 1,
+        "clause": "s. 1.01"
+      }
+    },
+    {
+      "id": "availability_end",
+      "value": "22 December 2025",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 2,
+        "clause": "s. 2.07"
+      }
+    },
+    {
+      "id": "first_repayment_date",
+      "value": "31 March 2026",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 5,
+        "clause": "s. 5.03"
+      }
+    },
+    {
+      "id": "final_maturity_date",
+      "value": "22 September 2030",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 5,
+        "clause": "s. 5.06"
+      }
+    },
+    {
+      "id": "interest_basis",
+      "value": "Floating",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 3,
+        "clause": "s. 3.01"
+      }
+    },
+    {
+      "id": "benchmark",
+      "value": "Term SOFR",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 3,
+        "clause": "s. 3.02"
+      }
+    },
+    {
+      "id": "margin",
+      "value": "1.75% per annum",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 3,
+        "clause": "s. 3.03"
+      }
+    },
+    {
+      "id": "benchmark_floor",
+      "value": "0.00%",
+      "confidence": "low",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 3,
+        "clause": "s. 3.04"
+      }
+    },
+    {
+      "id": "interest_period",
+      "value": "Three months",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 3,
+        "clause": "s. 3.05"
+      }
+    },
+    {
+      "id": "day_count",
+      "value": "Actual/360",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 3,
+        "clause": "s. 3.06"
+      }
+    },
+    {
+      "id": "default_interest",
+      "value": "2.00% per annum",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 3,
+        "clause": "s. 3.07"
+      }
+    },
+    {
+      "id": "arrangement_fee",
+      "value": "0.75% of the Total Commitments",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 4,
+        "clause": "s. 4.01"
+      }
+    },
+    {
+      "id": "commitment_fee",
+      "value": "0.25% per annum",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 4,
+        "clause": "s. 4.02"
+      }
+    },
+    {
+      "id": "agency_fee",
+      "value": "USD 30,000 per annum",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 4,
+        "clause": "s. 4.03"
+      }
+    },
+    {
+      "id": "prepayment_fee",
+      "value": "1.00% of the amount prepaid",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 4,
+        "clause": "s. 4.04"
+      }
+    },
+    {
+      "id": "repayment_profile",
+      "value": "Quarterly amortisation with a final balloon payment",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 5,
+        "clause": "s. 5.01"
+      }
+    },
+    {
+      "id": "repayment_frequency",
+      "value": "Quarterly",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 5,
+        "clause": "s. 5.02"
+      }
+    },
+    {
+      "id": "instalment_amount",
+      "value": "USD 1,500,000",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 5,
+        "clause": "s. 5.04"
+      }
+    },
+    {
+      "id": "balloon",
+      "value": "USD 93,000,000",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 5,
+        "clause": "s. 5.05"
+      }
+    },
+    {
+      "id": "min_prepayment",
+      "value": "USD 2,000,000",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 5,
+        "clause": "s. 5.07"
+      }
+    },
+    {
+      "id": "max_leverage",
+      "value": "5.00:1",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 6,
+        "clause": "s. 6.02"
+      }
+    },
+    {
+      "id": "min_interest_cover",
+      "value": "2.50:1",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 6,
+        "clause": "s. 6.03"
+      }
+    },
+    {
+      "id": "covenant_testing",
+      "value": "Quarterly",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 6,
+        "clause": "s. 6.04"
+      }
+    },
+    {
+      "id": "financials_deadline",
+      "value": "Within 90 days of each fiscal year end",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 6,
+        "clause": "s. 6.05"
+      }
+    },
+    {
+      "id": "security",
+      "value": "A first-priority security interest in substantially all assets of the Borrower",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 6,
+        "clause": "s. 6.06"
+      }
+    },
+    {
+      "id": "governing_law",
+      "value": "New York law",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 7,
+        "clause": "s. 7.05"
+      }
+    },
+    {
+      "id": "jurisdiction",
+      "value": "Courts of the State of New York sitting in New York County",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 7,
+        "clause": "s. 7.06"
+      }
+    },
+    {
+      "id": "majority_lenders",
+      "value": "More than 50% of the Total Commitments",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 7,
+        "clause": "s. 7.02"
+      }
+    },
+    {
+      "id": "transfer_consent",
+      "value": "Required for any assignment, unless an Event of Default is continuing",
+      "confidence": "high",
+      "source": {
+        "documentId": "credit-agreement",
+        "page": 7,
+        "clause": "s. 7.03"
+      }
+    }
+  ],
+  "seedReview": {
+    "edits": {
+      "benchmark_floor": {
+        "value": "0.50%"
+      }
+    },
+    "approved": {
+      "at": "2026-11-17T14:32:00Z"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+# Dependencies and build output
+node_modules
+dist
+
+# Python caches and local environments
+__pycache__
+.pytest_cache
+.ruff_cache
+.venv
+
+# Local settings. Secrets never belong in the repository.
+.env
+
+# Editor and operating system files
+.DS_Store
+.idea
+.vscode

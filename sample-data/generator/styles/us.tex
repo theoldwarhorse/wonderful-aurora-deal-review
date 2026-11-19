@@ -1,0 +1,17 @@
+% House style "us": a New York-law credit agreement.
+% Letter paper, wide margins, open line spacing, run-in underlined "Section 3.01" headings.
+\documentclass[12pt,letterpaper]{article}
+\usepackage[margin=1.25in]{geometry}
+\linespread{1.35}
+
+% \doctitle{title}{deal}{borrower}{date}
+\newcommand{\doctitle}[4]{%
+  \begin{center}
+    {\large\bfseries\MakeUppercase{#1}}\\[3mm]
+    {\itshape #2 \enspace|\enspace #3 \enspace|\enspace Dated #4}
+  \end{center}
+  \vspace{4mm}}
+
+% \clause{number}{heading}{text}
+\newcommand{\clause}[3]{%
+  \noindent\hspace{0.5in}\underline{#1}.\ \ \underline{#2}.\ \ #3\par\medskip}

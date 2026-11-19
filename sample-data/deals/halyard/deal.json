@@ -1,0 +1,468 @@
+{
+  "id": "halyard",
+  "name": "Project Halyard",
+  "receivedAt": "2026-11-18T12:00:00Z",
+  "borrower": "Kestrel Renewables Holdings Ltd",
+  "facility": "USD 250,000,000 term loan",
+  "documents": [
+    {
+      "id": "facility-agreement",
+      "short": "FA",
+      "title": "Facility Agreement",
+      "type": "agreement",
+      "dated": "14 March 2024",
+      "file": "facility-agreement.pdf"
+    },
+    {
+      "id": "schedule-1",
+      "short": "S1",
+      "title": "Schedule 1: Repayment and Fees",
+      "type": "schedule",
+      "dated": "14 March 2024",
+      "file": "schedule-1.pdf"
+    },
+    {
+      "id": "schedule-2",
+      "short": "S2",
+      "title": "Schedule 2: Financial Covenants",
+      "type": "schedule",
+      "dated": "14 March 2024",
+      "file": "schedule-2.pdf"
+    },
+    {
+      "id": "amendment-1",
+      "short": "AM1",
+      "title": "First Amendment Agreement",
+      "type": "amendment",
+      "dated": "2 June 2025",
+      "file": "amendment-1.pdf"
+    },
+    {
+      "id": "certificate-of-incorporation",
+      "short": "CI",
+      "title": "Certificate of Incorporation",
+      "type": "supporting",
+      "dated": "8 January 2019",
+      "file": "certificate-of-incorporation.pdf"
+    }
+  ],
+  "fields": [
+    {
+      "id": "borrower",
+      "value": "Kestrel Renewables Holdings Ltd",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 1,
+        "clause": "cl. 2"
+      }
+    },
+    {
+      "id": "borrower_reg_no",
+      "value": "11834527",
+      "confidence": "medium",
+      "source": {
+        "documentId": "certificate-of-incorporation"
+      }
+    },
+    {
+      "id": "borrower_jurisdiction",
+      "value": "England and Wales",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 5,
+        "clause": "cl. 29"
+      }
+    },
+    {
+      "id": "guarantor",
+      "value": null,
+      "confidence": null,
+      "source": null
+    },
+    {
+      "id": "arranger",
+      "value": "Aurora Bank plc",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 1,
+        "clause": "cl. 4"
+      }
+    },
+    {
+      "id": "original_lender",
+      "value": "Aurora Bank plc",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 1,
+        "clause": "cl. 5"
+      }
+    },
+    {
+      "id": "facility_agent",
+      "value": "Aurora Agency Services Ltd",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 1,
+        "clause": "cl. 6"
+      }
+    },
+    {
+      "id": "security_agent",
+      "value": null,
+      "confidence": null,
+      "source": null
+    },
+    {
+      "id": "facility_type",
+      "value": "Term loan",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 2,
+        "clause": "cl. 9"
+      }
+    },
+    {
+      "id": "facility_amount",
+      "value": "USD 250,000,000",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 2,
+        "clause": "cl. 10"
+      }
+    },
+    {
+      "id": "currency",
+      "value": "USD",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 2,
+        "clause": "cl. 11"
+      }
+    },
+    {
+      "id": "purpose",
+      "value": "Financing the construction of the Halyard offshore wind project",
+      "confidence": "medium",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 2,
+        "clause": "cl. 12"
+      }
+    },
+    {
+      "id": "ranking",
+      "value": "Senior secured",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 2,
+        "clause": "cl. 13"
+      }
+    },
+    {
+      "id": "agreement_date",
+      "value": "14 March 2024",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 1,
+        "clause": "cl. 1"
+      }
+    },
+    {
+      "id": "availability_end",
+      "value": "14 September 2024",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 3,
+        "clause": "cl. 14"
+      }
+    },
+    {
+      "id": "first_repayment_date",
+      "value": "14 September 2025",
+      "confidence": "high",
+      "source": {
+        "documentId": "schedule-1",
+        "page": 1,
+        "clause": "cl. 3"
+      }
+    },
+    {
+      "id": "final_maturity_date",
+      "value": "14 March 2029",
+      "confidence": "medium",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 4,
+        "clause": "cl. 24"
+      }
+    },
+    {
+      "id": "interest_basis",
+      "value": "Floating",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 3,
+        "clause": "cl. 16"
+      }
+    },
+    {
+      "id": "benchmark",
+      "value": "Term SOFR",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 3,
+        "clause": "cl. 17"
+      }
+    },
+    {
+      "id": "margin",
+      "value": "2.00% per annum",
+      "confidence": "high",
+      "source": {
+        "documentId": "amendment-1",
+        "page": 1,
+        "clause": "cl. 3"
+      }
+    },
+    {
+      "id": "benchmark_floor",
+      "value": "0.00%",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 3,
+        "clause": "cl. 19"
+      }
+    },
+    {
+      "id": "interest_period",
+      "value": "Three months",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 3,
+        "clause": "cl. 20"
+      }
+    },
+    {
+      "id": "day_count",
+      "value": "Actual/360",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 4,
+        "clause": "cl. 21"
+      }
+    },
+    {
+      "id": "default_interest",
+      "value": "2.00% per annum",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 4,
+        "clause": "cl. 22"
+      }
+    },
+    {
+      "id": "arrangement_fee",
+      "value": "1.25% of the Total Commitments",
+      "confidence": "high",
+      "source": {
+        "documentId": "schedule-1",
+        "page": 2,
+        "clause": "cl. 6"
+      }
+    },
+    {
+      "id": "commitment_fee",
+      "value": "0.53% per annum",
+      "confidence": "low",
+      "source": {
+        "documentId": "schedule-1",
+        "page": 2,
+        "clause": "cl. 7"
+      }
+    },
+    {
+      "id": "agency_fee",
+      "value": "USD 40,000 per annum",
+      "confidence": "high",
+      "source": {
+        "documentId": "schedule-1",
+        "page": 2,
+        "clause": "cl. 8"
+      }
+    },
+    {
+      "id": "prepayment_fee",
+      "value": "1.00% of the amount prepaid",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 4,
+        "clause": "cl. 26"
+      }
+    },
+    {
+      "id": "repayment_profile",
+      "value": "Amortising instalments with a final balloon payment",
+      "confidence": "high",
+      "source": {
+        "documentId": "schedule-1",
+        "page": 1,
+        "clause": "cl. 1"
+      }
+    },
+    {
+      "id": "repayment_frequency",
+      "value": "Semi-annually",
+      "confidence": "high",
+      "source": {
+        "documentId": "schedule-1",
+        "page": 1,
+        "clause": "cl. 2"
+      }
+    },
+    {
+      "id": "instalment_amount",
+      "value": "USD 12,500,000",
+      "confidence": "high",
+      "source": {
+        "documentId": "schedule-1",
+        "page": 1,
+        "clause": "cl. 4"
+      }
+    },
+    {
+      "id": "balloon",
+      "value": "USD 137,500,000",
+      "confidence": "high",
+      "source": {
+        "documentId": "schedule-1",
+        "page": 1,
+        "clause": "cl. 5"
+      }
+    },
+    {
+      "id": "min_prepayment",
+      "value": null,
+      "confidence": null,
+      "source": null
+    },
+    {
+      "id": "max_leverage",
+      "value": "4.50:1",
+      "confidence": "high",
+      "source": {
+        "documentId": "schedule-2",
+        "page": 1,
+        "clause": "cl. 1"
+      }
+    },
+    {
+      "id": "min_interest_cover",
+      "value": "3.00:1",
+      "confidence": "high",
+      "source": {
+        "documentId": "schedule-2",
+        "page": 1,
+        "clause": "cl. 2"
+      }
+    },
+    {
+      "id": "covenant_testing",
+      "value": "Quarterly",
+      "confidence": "high",
+      "source": {
+        "documentId": "schedule-2",
+        "page": 1,
+        "clause": "cl. 3"
+      }
+    },
+    {
+      "id": "financials_deadline",
+      "value": "Within 120 days of each financial year end",
+      "confidence": "high",
+      "source": {
+        "documentId": "schedule-2",
+        "page": 1,
+        "clause": "cl. 4"
+      }
+    },
+    {
+      "id": "security",
+      "value": "First-ranking security over the project assets, the project accounts and the shares in the Borrower",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 5,
+        "clause": "cl. 31"
+      }
+    },
+    {
+      "id": "governing_law",
+      "value": "English law",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 6,
+        "clause": "cl. 36"
+      }
+    },
+    {
+      "id": "jurisdiction",
+      "value": "Courts of England",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 6,
+        "clause": "cl. 37"
+      }
+    },
+    {
+      "id": "majority_lenders",
+      "value": "At least 66.67% of the Total Commitments",
+      "confidence": "high",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 6,
+        "clause": "cl. 33"
+      }
+    },
+    {
+      "id": "transfer_consent",
+      "value": "Required for any transfer, unless an Event of Default is continuing",
+      "confidence": "low",
+      "source": {
+        "documentId": "facility-agreement",
+        "page": 6,
+        "clause": "cl. 34"
+      }
+    }
+  ],
+  "points": [
+    {
+      "fieldId": "final_maturity_date",
+      "reason": "The First Amendment Agreement replaces \"14 March 2029\" with \"14 March 2030\". The extracted date is the one from the original agreement.",
+      "source": {
+        "documentId": "amendment-1",
+        "page": 1,
+        "clause": "cl. 2"
+      }
+    }
+  ]
+}

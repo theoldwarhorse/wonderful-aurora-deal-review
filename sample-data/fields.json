@@ -1,0 +1,51 @@
+[
+  { "id": "borrower", "group": "Parties", "label": "Borrower" },
+  { "id": "borrower_reg_no", "group": "Parties", "label": "Borrower registration number" },
+  { "id": "borrower_jurisdiction", "group": "Parties", "label": "Borrower jurisdiction" },
+  { "id": "guarantor", "group": "Parties", "label": "Guarantor" },
+  { "id": "arranger", "group": "Parties", "label": "Mandated lead arranger" },
+  { "id": "original_lender", "group": "Parties", "label": "Original lender" },
+  { "id": "facility_agent", "group": "Parties", "label": "Facility agent" },
+  { "id": "security_agent", "group": "Parties", "label": "Security agent" },
+
+  { "id": "facility_type", "group": "Facility", "label": "Facility type" },
+  { "id": "facility_amount", "group": "Facility", "label": "Total commitments" },
+  { "id": "currency", "group": "Facility", "label": "Currency" },
+  { "id": "purpose", "group": "Facility", "label": "Purpose" },
+  { "id": "ranking", "group": "Facility", "label": "Ranking" },
+
+  { "id": "agreement_date", "group": "Key dates", "label": "Agreement date" },
+  { "id": "availability_end", "group": "Key dates", "label": "Availability period ends" },
+  { "id": "first_repayment_date", "group": "Key dates", "label": "First repayment date" },
+  { "id": "final_maturity_date", "group": "Key dates", "label": "Final maturity date" },
+
+  { "id": "interest_basis", "group": "Interest", "label": "Interest rate type" },
+  { "id": "benchmark", "group": "Interest", "label": "Reference rate" },
+  { "id": "margin", "group": "Interest", "label": "Margin" },
+  { "id": "benchmark_floor", "group": "Interest", "label": "Reference rate floor" },
+  { "id": "interest_period", "group": "Interest", "label": "Interest period" },
+  { "id": "day_count", "group": "Interest", "label": "Day count convention" },
+  { "id": "default_interest", "group": "Interest", "label": "Default interest uplift" },
+
+  { "id": "arrangement_fee", "group": "Fees", "label": "Arrangement fee" },
+  { "id": "commitment_fee", "group": "Fees", "label": "Commitment fee" },
+  { "id": "agency_fee", "group": "Fees", "label": "Agency fee" },
+  { "id": "prepayment_fee", "group": "Fees", "label": "Prepayment fee" },
+
+  { "id": "repayment_profile", "group": "Repayment", "label": "Repayment profile" },
+  { "id": "repayment_frequency", "group": "Repayment", "label": "Repayment frequency" },
+  { "id": "instalment_amount", "group": "Repayment", "label": "Repayment instalment" },
+  { "id": "balloon", "group": "Repayment", "label": "Final repayment amount" },
+  { "id": "min_prepayment", "group": "Repayment", "label": "Minimum voluntary prepayment" },
+
+  { "id": "max_leverage", "group": "Financial covenants", "label": "Maximum leverage" },
+  { "id": "min_interest_cover", "group": "Financial covenants", "label": "Minimum interest cover" },
+  { "id": "covenant_testing", "group": "Financial covenants", "label": "Covenant testing frequency" },
+  { "id": "financials_deadline", "group": "Financial covenants", "label": "Annual financial statements due" },
+
+  { "id": "security", "group": "Security and legal", "label": "Security package" },
+  { "id": "governing_law", "group": "Security and legal", "label": "Governing law" },
+  { "id": "jurisdiction", "group": "Security and legal", "label": "Courts with jurisdiction" },
+  { "id": "majority_lenders", "group": "Security and legal", "label": "Majority lenders threshold" },
+  { "id": "transfer_consent", "group": "Security and legal", "label": "Borrower consent to transfers" }
+]
