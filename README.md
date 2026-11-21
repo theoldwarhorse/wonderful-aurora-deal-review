@@ -30,19 +30,25 @@ The [Halyard answer key](sample-data/deals/halyard/README.md) lists every plante
 
 - **New deal:** upload a document pack. No extraction agent is included, so its fields start empty.
 - **How to use:** a short guide for deal managers, available from the Deals page.
-- **Admin:** manage field definitions, view activity, and connect an external AI agent for an advisory final check. The agent can raise points for review; its MCP tools cannot edit values or approve deals.
+- **Admin:** three tabs, in the header.
+  - **Fields:** change the list of fields the agent is asked to extract. If the fields change, the app does not need to be redeployed.
+  - **Activity:** see how the tool is being used and how long reviews take. Once the prototype has been in use for a while, this data shows the value it adds.
+  - **AI agents:** connect an external AI agent, over MCP, to run a final check on a deal. It is a second check only: it flags fields to look at again, and it cannot edit values or approve deals.
 
-## What comes next
+## What I would improve with more time
 
-The first step is to watch deal managers use the prototype and let that shape the layout. With more time, the main additions would be:
+1. **Observe deal managers using the prototype.** Test whether they prefer to work field by field or document by document, and refine the layout around that behaviour.
+2. **Use the recorded activity to decide what to build.** Review time, waiting time, and how often extracted values are changed are already stored. Over a pilot they show where the tool saves time and where extraction needs work.
+3. **Improve evidence comparison.** Show an original clause beside its amendment and highlight source text when extraction provides page coordinates.
+4. **Connect uploads to the extraction service**, so a new deal arrives with its fields filled.
+5. **Evaluate a real checking agent.** Measure whether it catches errors and provides useful evidence, including errors shared with the extraction agent.
+6. **Add sign-in, roles, and a second approver** through the bank's identity provider.
+7. **Validate dates, amounts, and percentages**, including relationships between fields.
+8. **Retry failed deliveries automatically** and alert someone when intervention is needed.
+9. **Use reviewer corrections to improve extraction.**
+10. **Consider accepting high-confidence fields in one step.** This is left out on purpose: it is too risky until confidence scores have been measured against corrections on real deals.
 
-- show an original clause beside the amendment that changes it;
-- connect uploads to the extraction service, so a new deal arrives with its fields filled;
-- evaluate a real checking agent before anyone relies on its points;
-- add sign-in, roles, and a second approver;
-- validate dates, amounts, and percentages.
-
-The [submission note](docs/assumptions-and-decisions.md#with-more-time) has the full list, and [Architecture](docs/architecture.md#known-gaps) lists what is missing before the app could handle real loan documents.
+The prototype uses synthetic data and is not ready for real loan documents. [Architecture](docs/architecture.md#known-gaps) lists what is missing.
 
 ## Run the tests
 
@@ -70,5 +76,5 @@ npm test
 | [backend/](backend/README.md) | Python API, review rules, database, and backend tests |
 | [sample-data/](sample-data/README.md) | Fictional deals, PDFs, answer keys, and generation scripts |
 | [The brief](docs/brief.md) | Wonderful's original task |
-| [Submission note](docs/assumptions-and-decisions.md) | Assumptions, key decisions, and improvements with more time |
+| [Submission note](docs/assumptions-and-decisions.md) | Assumptions and key decisions |
 | [Architecture](docs/architecture.md) | Integrations, system behaviour, and known limitations |

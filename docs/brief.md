@@ -18,4 +18,4 @@ The task is intentionally a bit open ended and you'll have to make assumptions a
 
 ## Submission
 
-See the [README](../README.md) to run the prototype and the [submission note](assumptions-and-decisions.md) for assumptions, key decisions, and proposed improvements.
+See the [README](../README.md) to run the prototype and for proposed improvements, and the [submission note](assumptions-and-decisions.md) for assumptions and key decisions.

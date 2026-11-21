@@ -1,6 +1,6 @@
-# Assumptions, key decisions, and next steps
+# Assumptions and key decisions
 
-This is the short submission note requested in [the brief](brief.md). The deliverable is a runnable prototype for gathering feedback from deal managers on the review experience.
+This is the short submission note requested in [the brief](brief.md). What I would improve with more time is in the [README](../README.md#what-i-would-improve-with-more-time). The deliverable is a runnable prototype for gathering feedback from deal managers on the review experience.
 
 ## Scope
 
@@ -31,18 +31,5 @@ These choices would be validated with deal managers:
 **Record actions without overstating them.** Changes and opened items are recorded separately. Opening a field is evidence of an interaction, not proof that its source was read or understood.
 
 **Keep an optional AI check advisory.** An external agent can use MCP to read a deal and raise points for a second look. It cannot supply values, edit them, resolve its own points, or approve through those tools. Points sit beside the reviewed data and are excluded from the downstream message. Unresolved points appear in the approval summary but do not block the reviewer. No checking agent is included; Halyard has one preloaded example. An absence of points is not presented as a successful check.
-
-## With more time
-
-1. **Observe deal managers using the prototype.** Test whether they prefer to work field by field or document by document, and refine the layout around that behaviour.
-2. **Use the recorded activity to decide what to build.** Review time, waiting time, and how often extracted values are changed are already stored. Over a pilot they show where the tool saves time and where extraction needs work.
-3. **Improve evidence comparison.** Show an original clause beside its amendment and highlight source text when extraction provides page coordinates.
-4. **Connect uploads to the extraction service**, so a new deal arrives with its fields filled.
-5. **Evaluate a real checking agent.** Measure whether it catches errors and provides useful evidence, including errors shared with the extraction agent.
-6. **Add sign-in, roles, and a second approver** through the bank's identity provider.
-7. **Validate dates, amounts, and percentages**, including relationships between fields.
-8. **Retry failed deliveries automatically** and alert someone when intervention is needed.
-9. **Use reviewer corrections to improve extraction.**
-10. **Consider accepting high-confidence fields in one step.** This is left out on purpose: it is too risky until confidence scores have been measured against corrections on real deals.
 
 The prototype uses synthetic data and is not ready for real loan documents. See [Architecture](architecture.md) for integration details and known limitations.
