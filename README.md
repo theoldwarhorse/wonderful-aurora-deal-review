@@ -32,6 +32,18 @@ The [Halyard answer key](sample-data/deals/halyard/README.md) lists every plante
 - **How to use:** a short guide for deal managers, available from the Deals page.
 - **Admin:** manage field definitions, view activity, and connect an external AI agent for an advisory final check. The agent can raise points for review; its MCP tools cannot edit values or approve deals.
 
+## What comes next
+
+The first step is to watch deal managers use the prototype and let that shape the layout. With more time, the main additions would be:
+
+- show an original clause beside the amendment that changes it;
+- connect uploads to the extraction service, so a new deal arrives with its fields filled;
+- evaluate a real checking agent before anyone relies on its points;
+- add sign-in, roles, and a second approver;
+- validate dates, amounts, and percentages.
+
+The [submission note](docs/assumptions-and-decisions.md#with-more-time) has the full list, and [Architecture](docs/architecture.md#known-gaps) lists what is missing before the app could handle real loan documents.
+
 ## Run the tests
 
 Backend tests, from the repository root:
