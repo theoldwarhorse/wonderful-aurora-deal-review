@@ -37,16 +37,15 @@ The [Halyard answer key](sample-data/deals/halyard/README.md) lists every plante
 
 ## What I would improve with more time
 
-1. **Observe deal managers using the prototype.** Test whether they prefer to work field by field or document by document, and refine the layout around that behaviour.
-2. **Use the recorded activity to decide what to build.** Review time, waiting time, and how often extracted values are changed are already stored. Over a pilot they show where the tool saves time and where extraction needs work.
-3. **Improve evidence comparison.** Show an original clause beside its amendment and highlight source text when extraction provides page coordinates.
-4. **Connect uploads to the extraction service**, so a new deal arrives with its fields filled.
-5. **Evaluate a real checking agent.** Measure whether it catches errors and provides useful evidence, including errors shared with the extraction agent.
-6. **Add sign-in, roles, and a second approver** through the bank's identity provider.
-7. **Validate dates, amounts, and percentages**, including relationships between fields.
-8. **Retry failed deliveries automatically** and alert someone when intervention is needed.
-9. **Use reviewer corrections to improve extraction.**
-10. **Consider accepting high-confidence fields in one step.** This is left out on purpose: it is too risky until confidence scores have been measured against corrections on real deals.
+1. **Use the recorded activity to decide what to build.** Review time, waiting time, and how often extracted values are changed are already stored. Over a pilot they show where the tool saves time and where extraction needs work.
+2. **Improve evidence comparison.** Show an original clause beside its amendment and highlight source text when extraction provides page coordinates.
+3. **Connect uploads to the extraction service**, so a new deal arrives with its fields filled.
+4. **Evaluate a real checking agent.** Measure whether it catches errors and provides useful evidence, including errors shared with the extraction agent.
+5. **Add sign-in, roles, and a second approver** through the bank's identity provider.
+6. **Validate dates, amounts, and percentages**, including relationships between fields.
+7. **Retry failed deliveries automatically** and alert someone when intervention is needed.
+8. **Use reviewer corrections to improve extraction.**
+9. **Consider accepting high-confidence fields in one step.** This is left out on purpose: it is too risky until confidence scores have been measured against corrections on real deals.
 
 The prototype uses synthetic data and is not ready for real loan documents. [Architecture](docs/architecture.md#known-gaps) lists what is missing.
 
